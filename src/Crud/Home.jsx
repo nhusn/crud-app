@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 
 function Home() {
     const [data,setData] = useState([])
-k
+
     const succesmsg = ()=>{
         const Toast = Swal.mixin({
             toast: true,
@@ -27,7 +27,7 @@ k
     const handleDelete = (id)=>{
         const confirm = window.confirm("Do you like to Delete ?")
         if(confirm){
-            axios.delete("http://localhost:5367/user/"+id)
+            axios.delete("https://crud-server-a1cl.onrender.com/user/"+id)
         .then(res=>{
             alert("Record Deleted")
         })
@@ -70,7 +70,7 @@ k
                     })
                     return null
                 }else{
-                    axios.post("http://localhost:5367/user",resultObject)
+                    axios.post("https://crud-server-a1cl.onrender.com/user",resultObject)
                     .then(res=>{
                         succesmsg()
                     }).catch(err=>console.log(err))
@@ -108,7 +108,7 @@ k
                     })
                     return null
                 }else{
-                    axios.put(`http://localhost:5367/user/${d.id}`,resultObject)
+                    axios.put(`https://crud-server-a1cl.onrender.com/user/${d.id}`,resultObject)
                     .then(res=>succesmsg())
                     .catch(err=>console.log(err))
                 }
@@ -122,7 +122,7 @@ k
     }
 
     useEffect(()=>{
-        axios.get('http://localhost:5367/user')
+        axios.get('https://crud-server-a1cl.onrender.com/user')
         .then(res=>setData(res.data))
         .catch(err=>console.log(err))
     },[handleDelete])
